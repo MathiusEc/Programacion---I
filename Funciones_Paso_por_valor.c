@@ -9,7 +9,6 @@ float resta(float a, float b);
 float multiplicacion(float a, float b);
 float mdivision(float a, float b);
 
-
 int main(int argc, char const *argv[])
 {
     int op;
@@ -21,12 +20,12 @@ int main(int argc, char const *argv[])
     {
     case 1:
         printf("Ingrese el primer numero \n");
-        scanf("%f",&x);
+        scanf("%f", &x);
         printf("Ingrese el segundo numero \n");
-        scanf("%f",&y);
+        scanf("%f", &y);
 
-        resu = suma(x,y);
-        printf("La suma de  %f es de: ",resu);
+        resu = suma(x, y);
+        printf("La suma es: %.2f ", resu);
         break;
 
     case 2:
@@ -36,7 +35,7 @@ int main(int argc, char const *argv[])
         scanf("%f", &y);
 
         resu = resta(x, y);
-        printf("La resta de  %f es de: ", resu);
+        printf("La resta es: %.2f ", resu);
         break;
 
     case 3:
@@ -46,7 +45,7 @@ int main(int argc, char const *argv[])
         scanf("%f", &y);
 
         resu = multiplicacion(x, y);
-        printf("La multiplicacion de  %f es de: ", resu);
+        printf("La multiplicacion es: %.2f ", resu);
         break;
 
     case 4:
@@ -56,18 +55,16 @@ int main(int argc, char const *argv[])
         scanf("%f", &y);
 
         resu = mdivision(x, y);
-        printf("La division de %f es de: ", resu);
+        printf("La division es: %.2f ", resu);
         break;
     default:
         break;
     }
-
-
     return 0;
 }
 
-
-int menu(){
+int menu()
+{
     int opc;
     printf("Seleccione una opcion \n");
     printf("1. Suma \n");
@@ -75,37 +72,41 @@ int menu(){
     printf("3. Multiplicacion \n");
     printf("4. Division \n");
     printf(">> ");
-    scanf("%d",&opc);
+    scanf("%d", &opc);
     return opc;
 }
 
-float suma(float a, float b){
-    float r; //Variable Local
+float suma(float a, float b)
+{
+    float r; // Variable Local
     r = a + b;
     return r;
 }
 
-float resta(float a, float b){
-    float r; 
+float resta(float a, float b)
+{
+    float r;
     r = a - b;
     return r;
 }
 
-float multiplicacion(float a, float b){
-    float r; 
+float multiplicacion(float a, float b)
+{
+    float r;
     r = a * b;
     return r;
 }
 
-
-float mdivision(float a, float b /* Parametros posicionales */){
+float mdivision(float a, float b /* Parametros posicionales */)
+{
     float r;
     if (b != 0)
     {
         r = a / b;
-    }else{
+    }
+    else
+    {
         printf("No se puede dividir para cero \n");
     }
     return r;
 }
-
