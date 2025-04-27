@@ -12,7 +12,7 @@ Las funciones son: Ingreso datos, Compra Boletos*/
 int menu();
 void ingresoDatos(char nombres[][30], int boletos[], char pelicula[][30], int sala[], int cantCliente, int cantboleto);
 int encontrarCliente(char nombres[][30], char temp[30], int n);
-void compraBoletos(char nombres[][30], int boletos[], char pelicula[][30], int sala[], int n);
+void compraBoletos(char nombres[][30], int boletos[], char pelicula[][30], int sala[], int cantCliente);
 
 int main(int argc, char const *argv[])
 {
@@ -152,7 +152,7 @@ void ingresoDatos(char nombres[][30], int boletos[], char pelicula[][30], int sa
     }
 }
 
-void compraBoletos(char nombres[][30], int boletos[], char pelicula[][30], int sala[], int n)
+void compraBoletos(char nombres[][30], int boletos[], char pelicula[][30], int sala[], int cantCliente)
 {
     float precio = 2.50;
     float total, iva, descuento;
@@ -173,7 +173,7 @@ void compraBoletos(char nombres[][30], int boletos[], char pelicula[][30], int s
     }
     else
     {
-        cliente = encontrarCliente(nombres, nombuscar, n);
+        cliente = encontrarCliente(nombres, nombuscar,cantCliente);
         if (cliente == -1)
         {
             printf("El cliente no existe\n");
