@@ -16,12 +16,12 @@ Ingreasr nombres de competidores y validar entradas*/
 void ingresarNombres(char nombres[][30], int n);
 void resultados(char nombres[MAX_COMPETIDORES][30], int ganador[llaves], int sigRonda[MAX_COMPETIDORES]);
 void finalistas(char nombres[MAX_COMPETIDORES][30], int sigRonda[MAX_COMPETIDORES], int ganador[llaves]);
-void granFinal(char nombres[MAX_COMPETIDORES][30], int sigRonda[MAX_COMPETIDORES], int ganador[llaves]);
+void granFinal(char nombres[MAX_COMPETIDORES][30], int ganador[llaves]);
 
 int main(int argc, char *argv[])
 {
     char nombres[MAX_COMPETIDORES][30];
-    int ganador[llaves] = {0};
+    int ganador[llaves] = {1, 2, 3};
     int sigRonda[MAX_COMPETIDORES] = {0};
 
     ingresarNombres(nombres, MAX_COMPETIDORES);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     printf("\n");
     finalistas(nombres, sigRonda, ganador);
     printf("\n");
-    granFinal(nombres, sigRonda, ganador);
+    granFinal(nombres, ganador);
     return 0;
 }
 
@@ -177,46 +177,70 @@ void resultados(char nombres[MAX_COMPETIDORES][30], int ganador[llaves], int sig
 
 void finalistas(char nombres[MAX_COMPETIDORES][30], int sigRonda[MAX_COMPETIDORES], int ganador[llaves])
 {
-    char temp_nombres[30];
-    int temp_puntos;
-
-    for (int i = 0; i < MAX_COMPETIDORES - 1; i++)
+    // Asignamos los ganadores de cada llave
+    for (int i = 0; i < llaves; i++)
     {
-        for (int j = 0; j < MAX_COMPETIDORES - i - 1; j++)
+        if (sigRonda[i * 2] > sigRonda[i * 2 + 1])
         {
-            if (sigRonda[j] < sigRonda[j + 1] || (sigRonda[j] == sigRonda[j + 1] && j < j + 1))
-            {
-                temp_puntos = sigRonda[j];
-                sigRonda[j] = sigRonda[j + 1];
-                sigRonda[j + 1] = temp_puntos;
+            ganador[i] = i * 2;
+        }
+        else
+        {
+            ganador[i] = i * 2 + 1;
+        }
+    }
 
-                strcpy(temp_nombres, nombres[j]);
-                strcpy(nombres[j], nombres[j + 1]);
-                strcpy(nombres[j + 1], temp_nombres);
+    // Ordenamos los finalistas por puntos y en caso de empate, por el orden de la llave
+    for (int i = 0; i < llaves - 1; i++)
+    {
+        for (int j = 0; j < llaves - i - 1; j++)
+        {
+            int idx1 = ganador[j];
+            int idx2 = ganador[j + 1];
+
+            if (sigRonda[idx1] < sigRonda[idx2] || 
+               (sigRonda[idx1] == sigRonda[idx2] && ganador[j] < ganador[j + 1])) 
+            {
+                int temp = ganador[j];
+                ganador[j] = ganador[j + 1];
+                ganador[j + 1] = temp;
             }
         }
     }
 
+    // Mostramos los finalistas
     printf("Los finalistas son:\n");
-    printf("1. %s con %d puntos\n", nombres[0], sigRonda[0]);
-    printf("2. %s con %d puntos\n", nombres[1], sigRonda[1]);
+    printf("1. %s con %d puntos (Llave %d)\n", nombres[ganador[0]], sigRonda[ganador[0]], ganador[0] / 2 + 1);
+    printf("2. %s con %d puntos (Llave %d)\n", nombres[ganador[1]], sigRonda[ganador[1]], ganador[1] / 2 + 1);
 }
 
-void granFinal(char nombres[MAX_COMPETIDORES][30], int sigRonda[MAX_COMPETIDORES], int ganador[llaves])
+void granFinal(char nombres[MAX_COMPETIDORES][30], int ganador[llaves])
 {
-    int resu, opc, val;
-    printf("Ingrese quien gano %s entre %s\n", nombres[0], nombres[1]);
-    printf("1. Para %s\n", nombres[0]);
-    printf("2. Para %s\n", nombres[1]);
-    printf(">> ");
-    scanf("%d", &resu);
+    int resu;
+    int finalista1 = ganador[0];
+    int finalista2 = ganador[1];
+
+    do
+    {
+        printf("Ingrese quien ganó entre %s y %s\n", nombres[finalista1], nombres[finalista2]);
+        printf("1. Para %s\n", nombres[finalista1]);
+        printf("2. Para %s\n", nombres[finalista2]);
+        printf(">> ");
+        scanf("%d", &resu);
+
+        if (resu != 1 && resu != 2)
+        {
+            printf("Entrada no válida. Intente de nuevo.\n");
+        }
+    } while (resu != 1 && resu != 2);
 
     if (resu == 1)
     {
-        printf("Felicidades %s, ganaste el torneo\n", nombres[0]);
+        printf("¡Felicidades %s, ganaste el torneo!\n", nombres[finalista1]);
     }
-    else if (resu == 2)
+    else
     {
-        printf("Felicidades %s, ganaste el torneo\n", nombres[1]);
+        printf("¡Felicidades %s, ganaste el torneo!\n", nombres[finalista2]);
     }
-}
+}    
+
