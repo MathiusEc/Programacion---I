@@ -243,4 +243,3 @@ void granFinal(char nombres[MAX_COMPETIDORES][30], int ganador[llaves])
         printf("¡Felicidades %s, ganaste el torneo!\n", nombres[finalista2]);
     }
 }    
-
