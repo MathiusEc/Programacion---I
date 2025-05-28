@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     char vehiculos[5][30];
     char duenio[5][30];
     char color[5][30];
+    char cedula[5][30];
     float precio[5];
     int vendido[5] = {0};
     int ubicacion = 0;
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
         switch (opcion)
         {
         case 1:
-            agregarVehiculo(vehiculos, duenio, &ubicacion, color, precio);
+            agregarVehiculo(vehiculos, duenio, &ubicacion, color, precio, cedula);
             break;
         case 2:
             if (ubicacion == 0)
@@ -51,8 +52,8 @@ int main(int argc, char *argv[])
             }
             else
             {
-                listadoVehiculos(vehiculos, duenio, vendido, color, precio, ubicacion);
-                venderVehiculo(vehiculos, duenio, ubicacion, vendido, color, precio);
+                listadoVehiculos(vehiculos, duenio, vendido, color, precio, ubicacion, cedula);
+                venderVehiculo(vehiculos, duenio, ubicacion, vendido, color, precio, cedula);
             }
             break;
         case 3:
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                buscarVehiculoPorCedula(duenio, vehiculos, vendido, color, precio, ubicacion);
+                buscarVehiculoPorCedula(duenio, vehiculos, vendido, color, precio, ubicacion, cedula);
             }
             
             break;

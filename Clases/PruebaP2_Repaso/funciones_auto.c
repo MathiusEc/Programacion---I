@@ -10,7 +10,7 @@ se debe validar que la placa no se repita*/
 #include <string.h>
 #include "funciones_auto.h"
 
-void agregarVehiculo(char vehiculos[5][30], char duenio[5][30], int *ubicacion, char color[5][30], float precio[5])
+void agregarVehiculo(char vehiculos[5][30], char duenio[5][30], int *ubicacion, char color[5][30], float precio[5], char cedula[5][30])
 {
     char placa[30];
     int duplicado, len, val;
@@ -32,6 +32,15 @@ void agregarVehiculo(char vehiculos[5][30], char duenio[5][30], int *ubicacion, 
             duenio[*ubicacion][len] = '\0'; 
         }
 
+        printf("Ingrese la cedula del dueño del vehiculo: ");
+        fflush(stdin);
+        fgets(cedula[*ubicacion], 30, stdin);
+        len = strlen(cedula[*ubicacion]) - 1;
+        if (len >= 0 && cedula[*ubicacion][len] == '\n')
+        {
+            cedula[*ubicacion][len] = '\0'; 
+        }
+       
         printf("Ingrese la placa del vehiculo: ");
         fflush(stdin);
         fgets(placa, 30, stdin);
@@ -75,17 +84,16 @@ void agregarVehiculo(char vehiculos[5][30], char duenio[5][30], int *ubicacion, 
         if (precio[*ubicacion] < 0)
         {
             printf("El precio no puede ser negativo. Por favor, ingrese un precio valido.\n");
-            return;
         }
 
     } while (precio[*ubicacion] < 0 || val != 1);
 
-    printf("Vehiculo agregado: %s, Dueño: %s, Color %s, Precio %f\n", vehiculos[*ubicacion], duenio[*ubicacion], color[*ubicacion], precio[*ubicacion]);
+    printf("Vehiculo agregado: %s, Dueño: %s,  Cedula %s, Color %s, Precio %f\n", vehiculos[*ubicacion], duenio[*ubicacion], cedula[*ubicacion], color[*ubicacion], precio[*ubicacion]);
     (*ubicacion)++;
 }
 
 
-void venderVehiculo(char vehiculos[5][30], char duenio[5][30], int ubicacion, int vendido[5], char color[5][30], float precio[5])
+void venderVehiculo(char vehiculos[5][30], char duenio[5][30], int ubicacion, int vendido[5], char color[5][30], float precio[5], char cedula[5][30])
 {
     char placa[30];
     int len, encontrado = 0;
@@ -110,7 +118,7 @@ void venderVehiculo(char vehiculos[5][30], char duenio[5][30], int ubicacion, in
         if (strcmp(vehiculos[i], placa) == 0 && vendido[i] == 0)
         {
             vendido[i] = 1; // Marcar como vendido
-            printf("Vehiculo vendido: %s, Dueño: %s, Precio: %f, Color: %s\n", vehiculos[i], duenio[i], precio[i], color[i]);
+            printf("Vehiculo vendido: %s, Dueño: %s, Cedula: %s, Precio: %f, Color: %s\n", vehiculos[i], duenio[i], cedula[i], precio[i], color[i]);
             encontrado = 1;
             break;
         }
@@ -122,7 +130,7 @@ void venderVehiculo(char vehiculos[5][30], char duenio[5][30], int ubicacion, in
     }
 }
 
-void listadoVehiculos(char vehiculos[5][30], char duenio[5][30], int vendido[5], char color[5][30], float precio[5], int ubicacion)
+void listadoVehiculos(char vehiculos[5][30], char duenio[5][30], int vendido[5], char color[5][30], float precio[5], int ubicacion, char cedula[5][30])
 {
     if (ubicacion == 0) {
         printf("No hay vehículos registrados.\n");
@@ -131,8 +139,8 @@ void listadoVehiculos(char vehiculos[5][30], char duenio[5][30], int vendido[5],
 
     printf("\nListado de vehículos:\n");
     for (int i = 0; i < ubicacion; i++) {
-        printf("Placa: %s | Dueño: %s | Color: %s | Precio: %.2f | Estado: ", 
-               vehiculos[i], duenio[i], color[i], precio[i]);
+        printf("Placa: %s | Dueño: %s | Cedula: %s | Color: %s | Precio: %.2f | Estado: ", 
+               vehiculos[i], duenio[i], cedula[i], color[i], precio[i]);
 
         if (vendido[i] == 1) {
             printf("Vendido\n");
@@ -142,23 +150,23 @@ void listadoVehiculos(char vehiculos[5][30], char duenio[5][30], int vendido[5],
     }
 }
 
-void buscarVehiculoPorCedula(char duenio[5][30], char vehiculos[5][30], int vendido[5], char color[5][30], float precio[5], int ubicacion)
+void buscarVehiculoPorCedula(char duenio[5][30], char vehiculos[5][30], int vendido[5], char color[5][30], float precio[5], int ubicacion, char cedula[5][30])
 {
-    char cedula[30];
+    char cel[30];
     int len, encontrado = 0;
 
     printf("Ingrese la cedula del dueño del vehiculo a buscar: ");
     fflush(stdin);
-    fgets(cedula, 30, stdin);
-    len = strlen(cedula) - 1;
-    if (len >= 0 && cedula[len] == '\n')
+    fgets(cel, 30, stdin);
+    len = strlen(cel) - 1;
+    if (len >= 0 && cel[len] == '\n')
     {
-        cedula[len] = '\0'; 
+        cel[len] = '\0'; 
     }
 
     for (int i = 0; i < ubicacion; i++)
     {
-        if (strcmp(duenio[i], cedula) == 0)
+        if (strcmp(cedula[i], cel) == 0)
         {
             printf("Vehiculo encontrado: Placa: %s, Dueño: %s, Color: %s, Precio: %.2f, Estado: ", 
                    vehiculos[i], duenio[i], color[i], precio[i]);
