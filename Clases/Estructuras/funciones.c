@@ -95,3 +95,8 @@ struct Estudiantes *buscarEstu(struct Estudiante estudiante[3], char codigoBusc[
     }
     return 0;
 }
+
+void imprimirunSoloEstu (struct Estudiantes *buscarEstu)
+{
+    printf("1. Codigo %s, \t 2. Nombre %s\t , 3. Edad %f\n", prtEstu[i]->codigo, );
+}
