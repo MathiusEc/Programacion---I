@@ -38,9 +38,8 @@ void crearMat(struct Materia materias[3], int cont)
 
 void crearEstu(struct Estudiante estudiante[3], int cont)
 {
-    int contM = 0;
     printf("Ingrese el codigo del estudiante: %d\n", cont + 1);
-    leerCadena(estudiante[30].codigo, 10);
+    leerCadena(estudiante[cont].codigo, 10);
 
     printf("Ingrese el nombre de los estudiantes: %d\n", cont + 1);
     leerCadena(estudiante[cont].nombre, 30);
@@ -59,7 +58,7 @@ void imprimirMat(struct Materia materias[3], int cont)
     printf("1. Codigo \t, 2. Nombre \t, 3. Nota 1 \t, Nota 2 \t, Nota 3 \t, 4. Promedio \t\n");
     for (int i = 0; i < cont; i++)
     {
-        printf("%s\t, %s\t, %f\t, %f\t,  %f \t %f\t\n", materias[i].codigo, materias[i].nombre, materias[i].notas[0],
+        printf("%s\t\t, %s\t\t, %.2f\t\t, %.2f\t\t,  %.2f \t\t %.2f\t\t\n", materias[i].codigo, materias[i].nombre, materias[i].notas[0],
                materias[i].notas[1], materias[i].notas[2], materias[i].prom);
     }
 }
@@ -68,12 +67,12 @@ void imprimirEstu(struct Estudiante estudiante[3], int cont)
 {
     for (int i = 0; i < cont; i++)
     {
-        printf("1. Codigo %s, \t 2. Nombre %s\t , 3. Edad %f\n", estudiante[i].codigo, estudiante[i].materias, estudiante[i].edad);
-        imprimirMat(estudiante[i].materias, estudiante[i].NumM);
+        printf("Códdigo: %s\t\t, Nombre: %s\t\t, Edad: %d\t\t\n", estudiante[i].codigo, estudiante[i].materias, estudiante[i].edad);
+        imprimirMat(estudiante[i].materias, estudiante[i].numM);
     }
 }
 
-struct Estudiantes *buscarEstu(struct Estudiante estudiante[3], char codigoBusc[], int cont)
+struct Estudiante* buscarEstu(struct Estudiante estudiante[3], char codigoBusc[], int cont)
 {
     struct Estudiante *prtEstu;
     int f = 0;
@@ -83,20 +82,19 @@ struct Estudiantes *buscarEstu(struct Estudiante estudiante[3], char codigoBusc[
         if (strcmp(estudiante[i].codigo, codigoBusc) == 0)
         {
             prtEstu = &estudiante[i];
-            f=1;
+            f = 1;
             return prtEstu;
         }
-
-        if(f == 0)
-        {
-            printf("No existe este estudiante\n");
-            
-        }
+    }
+    if (f == 0)
+    {
+        printf("No existe este estudiante\n");
     }
     return 0;
 }
 
-void imprimirunSoloEstu (struct Estudiantes *buscarEstu)
+void imprimirunSoloEstu(struct Estudiante *prtEstu)
 {
-    printf("1. Codigo %s, \t 2. Nombre %s\t , 3. Edad %f\n", prtEstu[i]->codigo, );
+    printf("1. Codigo %s, \t 2. Nombre %s\t , 3. Edad %d\n", prtEstu->codigo, prtEstu->nombre, prtEstu->edad);
+    imprimirMat(prtEstu->materias, prtEstu->numM);
 }

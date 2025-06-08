@@ -21,4 +21,6 @@ void leerCadena(char *cadena, int num);
 void crearMat(struct Materia materias[3], int cont);
 void crearEstu(struct Estudiante estudiante[3], int cont);
 void imprimirMat(struct Materia materias[3], int cont);
-void imprimirEstu(struct Materia materias[3], struct Estudiante estudiante[3], int cont);
+void imprimirEstu(struct Estudiante estudiante[3], int cont);
+struct Estudiante* buscarEstu(struct Estudiante estudiante[3], char codigoBusc[], int cont);
+void imprimirunSoloEstu (struct Estudiante *prtEstu);
