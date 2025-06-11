@@ -2,6 +2,7 @@
 En este repositorio se recopilaran los trabajos y tareas realizadas en clase. 
 
 Con mucho cariño para mi yo del futuro.
+y para quien le pueda ser el repo tmb
 
 :D
 
