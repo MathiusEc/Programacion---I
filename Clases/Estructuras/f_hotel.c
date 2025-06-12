@@ -110,8 +110,18 @@ void LiberarHabitacion(struct Habitacion habitaciones[], char id[])
     {
         if (strcmp(habitaciones[i].id, id) == 0)
         {
+            // Cambiar el estado a "Disponible"
             strcpy(habitaciones[i].estado, "Disponible");
-            printf("El estado de la habitación %s ha sido cambiado a %s.\n", habitaciones[i].id, "Disponible");
+
+            // Limpiar los datos del huésped
+            strcpy(habitaciones[i].huesped.nombre, "");
+            strcpy(habitaciones[i].huesped.telefono, "");
+            strcpy(habitaciones[i].huesped.documento, "");
+
+            // Limpiar el tiempo de reserva
+            habitaciones[i].tiempo = 0;
+
+            printf("La habitación %s ha sido liberada y está disponible nuevamente.\n", habitaciones[i].id);
             return;
         }
     }
