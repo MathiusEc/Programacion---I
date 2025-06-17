@@ -118,7 +118,6 @@ void LiberarHabitacion(struct Habitacion habitaciones[], char id[])
             strcpy(habitaciones[i].huesped.telefono, "");
             strcpy(habitaciones[i].huesped.documento, "");
 
-            // Limpiar el tiempo de reserva
             habitaciones[i].tiempo = 0;
 
             printf("La habitación %s ha sido liberada y está disponible nuevamente.\n", habitaciones[i].id);
