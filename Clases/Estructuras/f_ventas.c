@@ -231,3 +231,5 @@ void imprimirsolouno(struct Venta *venta)
 
     printf("TOTAL DE LA VENTA: %.2f\n", venta->total_venta);
 }
+
+
