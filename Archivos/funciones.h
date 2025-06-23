@@ -24,3 +24,10 @@ struct Venta
 void leerCadena(char *cadena, int num);
 void inicializarProducto(struct Producto productos[5]);
 void imprimirProducto(struct Producto productos[5]);
+void guardarProducto(struct Producto *productos);
+int leerProducto(struct Producto productos[5]);
+void realizarVenta(struct Venta ventas[5], struct Producto productos[5], int *numVentas);
+void listarVentas(struct Venta ventas[5], int numVentas);
+void guardarVenta(struct Venta *ventas, int numVentas);
+int leerVentas(struct Venta ventas[5], int *numVentas);
+void buscarVenta();
