@@ -1,152 +1,98 @@
-# Programming I - Exercise Repository 📚
+# Programming I: Course Repository
 
-Welcome to my Programming I repository! This collection contains all the assignments, projects, and exercises completed during the course at UDLA (Universidad de Las Américas).
+This repository serves as a comprehensive collection of assignments, projects, and exercises developed during the Programming I course at Universidad de las Américas (UDLA). It is designed to document the learning process and provide a reference for basic and intermediate programming concepts in the C language.
 
-Made with love for my future self and anyone who might find this repository useful 💙
+## Repository Structure
 
----
+The project is organized into several modules, each focusing on specific concepts:
 
-## 📂 Repository Structure
+- **Algorithms**: Implementations of fundamental algorithms and data structures.
+- **File Management**: Projects focused on file handling and data persistence.
+- **Class Sessions**: Code examples and materials developed during classes.
+- **General Exercises**: Various programming challenges and practice problems.
+- **Structure Exercises**: Implementations utilizing advanced C structures (structs).
+- **Pointer Exercises**: Projects dedicated to memory management and pointer manipulation.
 
-### 🔍 **Algoritmos** (Algorithms)
-Common algorithms and data structure implementations in C.
-
-### 📁 **Archivos** (File Management)
-File handling projects and data persistence systems.
-
-### 🎓 **Clases** (Class Materials)
-Code examples, exercises, and materials from class sessions.
-
-### 💡 **Ejercicios** (Exercises)
-Various programming challenges and practice problems.
-
-### 🏗️ **Ejercicios_Estructuras** (Structure Exercises)
-Advanced struct-based projects and implementations.
-
-### 👉 **Ejercicios_Punteros** (Pointer Exercises)
-Pointer manipulation and memory management exercises.
-
----
-
-## 🚀 How to Use
+## Getting Started
 
 ### Prerequisites
-- **GCC Compiler** (MinGW for Windows, GCC for Linux/Mac)
-- **Terminal/Command Prompt**
-- Basic knowledge of C programming
 
-### Compilation
+- **GCC Compiler**: MinGW for Windows, or standard GCC for Linux/macOS.
+- **Terminal Interface**: Command Prompt, PowerShell, or Bash.
+- Basic knowledge of C programming.
 
-#### Single File Programs
+### Compilation Guide
+
+#### Individual Programs
+To compile and run a single source file:
 ```bash
 gcc filename.c -o output_name
 ./output_name
 ```
 
-#### Multi-File Projects (e.g., Football System)
+#### Multi-file Projects
+For projects involving multiple source files (e.g., Football League System):
 ```bash
-gcc futbol.c f_futbol.c -o futbol
-./futbol
+gcc main_file.c functions_file.c -o program_name
+./program_name
 ```
 
-#### For Windows with MinGW
-```powershell
-gcc filename.c -o filename.exe
-.\filename.exe
-```
+## Football League System
 
-### Running the Football League System
+The "Archivos" directory contains the Football League System, a complete management application.
 
-1. Navigate to the `Archivos` folder
-2. Compile the project:
-   ```bash
-   gcc futbol.c f_futbol.c -o futbol
-   ```
-3. Run the program:
-   ```bash
-   ./futbol
-   ```
-4. Follow the menu options:
-   - **1**: Initialize teams
-   - **2**: Initialize players
-   - **3**: Show leaderboard (sorted by points)
-   - **4**: Show players
-   - **5**: Register a match
-   - **6**: Show top scorers table
-   - **7**: Exit
+### Features
+- Team management (points, goals, matches).
+- Player statistics tracking.
+- Match registration and goal scoring.
+- Automatic leaderboard and top scorers sorting.
+- Persistent storage using binary files.
 
-The system uses binary files (`equipos.dat`, `jugadores.dat`, `partidos.dat`) to persist data between sessions.
+### Execution
+1. Navigate to the `Archivos` directory.
+2. Compile the source: `gcc futbol.c f_futbol.c -o futbol`.
+3. Execute the binary: `./futbol`.
 
----
+## Educational Objectives
 
-## 📝 Key Features by Project
+This repository demonstrates the practical application of:
+- Structured programming principles.
+- Dynamic and static memory management.
+- File input/output operations for data persistence.
+- Implementation of sorting and search algorithms.
+- Modular code architecture.
 
-### Football League System
-- ✅ Team management with points, goals, and matches played
-- ✅ Player tracking with individual goal statistics
-- ✅ Match registration with goal scorers
-- ✅ Automatic leaderboard sorting
-- ✅ Top scorers table (ranked by goals)
-- ✅ Binary file persistence
-- ✅ Data validation and error handling
+## Technical Specifications
 
-### Structure-Based Projects
-- Contact management with CRUD operations
-- Medical record systems
-- Sales tracking and reporting
+- **Language**: Standard C.
+- **Compiler**: GCC.
+- **Data Structures**: Structs, nested arrays, and pointers.
+- **Persistence**: Binary file operations (`.dat` format).
 
-### Algorithm Implementations
-- Sorting algorithms (Bubble sort)
-- Search algorithms (Linear search)
-- Array manipulations (Rotation, frequency counting)
+## Academic Information
+
+- **Institution**: Universidad de las Américas (UDLA)
+- **Course**: Programming I
+- **Author**: MathiusEc
+- **License**: Academic Use Only
 
 ---
 
-## 🛠️ Technologies Used
+<div align="center">
 
-- **Language**: C
-- **Compiler**: GCC
-- **File I/O**: Binary file operations
-- **Data Structures**: Structs, arrays, nested structures
-- **Concepts**: Functions, pointers, file handling, sorting algorithms
+### Personal Note
 
----
+*"I'm in love with you, you idiot!"*
 
-## 📚 Learning Objectives
+**— Ramona Flowers**
 
-This repository demonstrates proficiency in:
-- Structured programming in C
-- Memory management and pointers
-- File input/output operations
-- Data structure implementation
-- Algorithm design and analysis
-- Modular code organization
-- Problem-solving and logic development
+<br>
 
----
+<img src="https://i.pinimg.com/736x/09/d8/d8/09d8d8e6e412188de35a34f9ea7a00fe.jpg" alt="Inspiration" width="280">
 
-## 🤝 Contributing
+<br><br>
 
-Feel free to use this code for learning purposes. If you find any bugs or improvements, suggestions are welcome!
+*Document updated on April 2026*
 
----
+</div>
 
-## 📄 License
-
-This is an educational project. Feel free to use and learn from it.
-
----
-
-## 💫 Credits
-
-Created with dedication during Programming I course at UDLA.
-
-Made with 💙 for learning and growth.
-
-![Link](https://i.pinimg.com/736x/09/d8/d8/09d8d8e6e412188de35a34f9ea7a00fe.jpg)
-
-### *Ramona Flowers*
-
----
-
-**Note**: All data files (`.dat`) are generated automatically when running the programs. Make sure to initialize teams and players before registering matches in the Football League System.
